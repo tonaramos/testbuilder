@@ -125,18 +125,6 @@ describe('MasterCard', function() {
     expect(detectNetwork('5312345678901234')).to.equal('MasterCard');
   });
   
- 
-
-
-
-
-// for (var prefix = 644; prefix <= 649; prefix++) {
-//   (function(prefix) {
-//     it('has a prefix of ' + prefix + ' and a length of 16');
-//     it('has a prefix of ' + prefix + ' and a length of 19');
-//   })(prefix)
-// }
-
   // You can also use should instead of expect, which changes the style
   // slightly. It really doesn't matter which one you use - check out 
   // http://chaijs.com/guide/styles/ for more info, but it's important
@@ -144,7 +132,6 @@ describe('MasterCard', function() {
   // and should, but that's just for learning), so once you've gotten 
   // these tests to pass using should syntax, refactor your tests to 
   // use either expect or should, but not both. 
- 
   
   it('has a prefix of 54 and a length of 16', function() {
     expect(detectNetwork('5412345678901234')).to.equal('MasterCard');
@@ -152,10 +139,7 @@ describe('MasterCard', function() {
  
   it('has a prefix of 55 and a length of 16', function() {
     expect(detectNetwork('5512345678901234')).to.equal('MasterCard');
-  });
- 
-
-
+  }); 
 });
 
 describe('Discover', function() {
@@ -214,26 +198,7 @@ describe('Discover', function() {
 });
 
 describe('Maestro', function() {
-  // Write full test coverage for the Maestro card
-
   var assert = chai.assert;
-
-    // var expect = chai.expect;
-//   let maestroPrefix = ['5020','5018','5038','6304'];
-
-// for (let prefixIndex = 0; prefixIndex < maestroPrefix.length; prefixIndex++) {    //for loop for the prefix range 622126-22925
-//     for (let length = 12; length <= 19; length++) {          //for loop for car lenght
-//         let addNumbers = '01234567';//.slice(prefix.length - 1); //slicing from the 5th index (inclusive)
-        
-//    (function(prefixIndex) {
-//       it(('has a prefix of ' + maestroPrefix[prefixIndex] + ' and a length of ' + length), function () {
-//         expect(detectNetwork( maestroPrefix[prefixIndex].toString() + addNumbers)).to.equal('Maestro');
-//        });
-//      })(prefixIndex);
-//     addNumbers += '0';  
-//     };
-//   };
-// });
 
   it('has a prefix of 5020 and a length of 12', function() {
     assert(detectNetwork('502015698252') === 'Maestro');
@@ -284,8 +249,7 @@ describe('Maestro', function() {
   it('has a prefix of 5018 and a length of 19', function() {
     assert(detectNetwork('5018569825623456789') === 'Maestro');
   });
-
-    it('has a prefix of 5038 and a length of 12', function() {
+  it('has a prefix of 5038 and a length of 12', function() {
     assert(detectNetwork('503815698252') === 'Maestro');
   });
   it('has a prefix of 5038 and a length of 13', function() {
@@ -333,8 +297,6 @@ describe('Maestro', function() {
   it('has a prefix of 6304 and a length of 19', function() {
     assert(detectNetwork('6304569825623456789') === 'Maestro');
   });
-  
-
 });
 
 describe('China UnionPay', function () {
@@ -356,8 +318,6 @@ describe('China UnionPay', function () {
         });
       })(prefix);
   }  
-
-
  for (let prefix = 622126; prefix <= 622925; prefix++) {    //for loop for the prefix range 622126-22925
       (function(prefix) {    
         it('has a prefix of ' + prefix + ' and a length of 16', function () {
@@ -374,7 +334,6 @@ describe('China UnionPay', function () {
         });
       })(prefix);
   }  
-
 
   for (let prefix = 6282; prefix <= 6288; prefix++) {    //for loop for the prefix range 622126-22925
        (function(prefix) {
@@ -393,9 +352,6 @@ describe('China UnionPay', function () {
     })(prefix);
   }
 });
-
-//Switch: prefix [4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759]
-//        length [16, 18, 19]
 
 describe('should support Switch', function () {
   let expect = chai.expect;
