@@ -392,26 +392,41 @@ describe('China UnionPay', function () {
         });
     })(prefix);
   }
-
-
-
-
-
-// -----------------------Original for-loop from instructions
-// for (var prefix = 644; prefix <= 649; prefix++) {
-//   (function(prefix) {
-//     it('has a prefix of ' + prefix + ' and a length of 16');
-//     it('has a prefix of ' + prefix + ' and a length of 19');
-//   })(prefix)
-// }
-
 });
 
-  describe('should support Switch', function () {
-  // it('test name', function () {
-   // })
-  });
+//Switch: prefix [4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759]
+//        length [16, 18, 19]
 
+describe('should support Switch', function () {
+  let expect = chai.expect;
+  let switchArray = [4903, 4905, 4911, 4936, 6333, 6759];
+  let switchArrayB = [564182, 633110];
+  for (let index = 0; index < switchArray.length; index++) {    //for loop for the prefix range 622126-22925
+     (function(index) {
+      it('has a prefix of ' + switchArray[index] + ' and a length of 16', function () {
+        expect(detectNetwork(switchArray[index].toString() + '123456789012')).to.equal('Switch');
+      });
+      it('has a prefix of ' + switchArray[index] + ' and a length of 18', function () {
+        expect(detectNetwork(switchArray[index].toString() + '12345678901234')).to.equal('Switch');
+      });
+      it('has a prefix of ' + switchArray[index] + ' and a length of 19', function () {
+        expect(detectNetwork(switchArray[index].toString() + '123456789012345')).to.equal('Switch');
+      });
+  })(index);
+  }
 
-
+  for (let indexB = 0; indexB < switchArrayB.length; indexB++) {    //for loop for the prefix range 622126-22925
+     (function(indexB) {
+      it('has a prefix of ' + switchArrayB[indexB] + ' and a length of 16', function () {
+        expect(detectNetwork(switchArrayB[indexB].toString() + '1234567890')).to.equal('Switch');
+      });
+      it('has a prefix of ' + switchArrayB[indexB] + ' and a length of 18', function () {
+        expect(detectNetwork(switchArrayB[indexB].toString() + '123456789012')).to.equal('Switch');
+      });
+      it('has a prefix of ' + switchArrayB[indexB] + ' and a length of 19', function () {
+        expect(detectNetwork(switchArrayB[indexB].toString() + '1234567890123')).to.equal('Switch');
+      });
+  })(indexB);
+  }  
+});
 });
